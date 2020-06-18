@@ -1,14 +1,12 @@
 package com.hobbie.services.user.entrypoint;
 
 import com.hobbie.services.user.dataprovider.UserDataProvider;
-import com.hobbie.services.user.entrypoint.model.User;
+import com.hobbie.services.user.usecase.model.User;
+import com.hobbie.services.user.usecase.UserUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
-import java.util.Arrays;
 import java.util.List;
 import javax.validation.Valid;
 import java.util.Optional;

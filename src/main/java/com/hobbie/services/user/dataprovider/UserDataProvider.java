@@ -1,7 +1,8 @@
 package com.hobbie.services.user.dataprovider;
 
-import com.hobbie.services.user.entrypoint.model.User;
+import com.hobbie.services.user.usecase.model.User;
 import com.hobbie.services.user.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

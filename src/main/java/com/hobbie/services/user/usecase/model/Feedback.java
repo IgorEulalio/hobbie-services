@@ -1,4 +1,4 @@
-package com.hobbie.services.user.entrypoint.model;
+package com.hobbie.services.user.usecase.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
