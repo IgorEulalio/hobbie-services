@@ -36,13 +36,10 @@ public class HobbieController {
             @PathVariable(required = true) String user_id,
             @RequestBody @Valid EventDto event){
 
-        Optional<User> user = UserDataProvider.getUserById(user_id);
+        User user = UserDataProvider.getUserById(user_id);
 
-        if (user.isPresent()) {
-            useCase.addCategoryInUser(user.get(), event);
-            return ResponseEntity.status(204).build();
-        }
+        useCase.addCategoryInUser(user, event);
+        return ResponseEntity.status(204).build();
 
-        return ResponseEntity.status(404).build();
     }
 }

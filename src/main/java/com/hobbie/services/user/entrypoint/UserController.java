@@ -1,6 +1,7 @@
 package com.hobbie.services.user.entrypoint;
 
 import com.hobbie.services.user.dataprovider.UserDataProvider;
+import com.hobbie.services.user.entrypoint.dto.FeedbackDto;
 import com.hobbie.services.user.usecase.model.User;
 import com.hobbie.services.user.usecase.UserUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class UserController {
     @Autowired
     private UserDataProvider userDataProvider;
 
+    @Autowired
+    private UserUseCase userUseCase;
+
     @GetMapping()
     public ResponseEntity<List<User>> getUsers(){
         return  ResponseEntity.ok().body(userDataProvider.getUsers());
@@ -25,12 +29,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable String id) {
-
-        Optional<User> userById = userDataProvider.getUserById(id);
-
-        if (userById.isPresent()) return  ResponseEntity.ok().body(userDataProvider.getUserById(id).get());
-
-        else return ResponseEntity.status(404).build();
+        return ResponseEntity.ok().body(userDataProvider.getUserById(id));
     }
 
     @PostMapping()
@@ -38,5 +37,15 @@ public class UserController {
         userDataProvider.addUser(user);
 
         return ResponseEntity.status(201).build();
+    }
+
+    @PostMapping("/{id}/feedback")
+    public ResponseEntity<User> addFeedback(@PathVariable String id,
+                                            @RequestBody @Valid FeedbackDto dto){
+
+        User user = userDataProvider.getUserById(id);
+        userUseCase.addFeedback(user, dto);
+
+        return ResponseEntity.status(204).build();
     }
 }
