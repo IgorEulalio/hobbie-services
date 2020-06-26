@@ -11,6 +11,4 @@ public class ExceptionResponse {
     public ExceptionResponse(String message){
         this.message = message;
     }
-
-
 }

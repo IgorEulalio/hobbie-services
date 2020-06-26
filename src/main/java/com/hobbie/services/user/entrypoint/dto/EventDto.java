@@ -1,6 +1,6 @@
 package com.hobbie.services.user.entrypoint.dto;
 
-import com.hobbie.services.user.usecase.model.Category;
+import com.hobbie.services.hobbie.usecase.model.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

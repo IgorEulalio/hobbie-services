@@ -1,4 +1,4 @@
-package com.hobbie.services.user.usecase.model;
+package com.hobbie.services.hobbie.usecase.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
