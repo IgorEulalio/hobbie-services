@@ -37,12 +37,21 @@ public class UserUseCase {
         userDataProvider.addUser(user);
     }
 
-    public void addFeedback(User user, FeedbackDto dto) {
+    public void addFeedback(String id, FeedbackDto dto) {
+        var user = userDataProvider.getUserById(id);
         Feedback feedback = user.getFeedback();
         feedback.getNota().add(dto.getNota());
         feedback.setMediaNota(feedback.getMediaNota());
         feedback.setAvaliacoes(feedback.getAvaliacoes() + 1);
         user.setFeedback(feedback);
         userDataProvider.addUser(user);
+    }
+
+    public User getUserById(String id) {
+        return userDataProvider.getUserById(id);
+    }
+
+    public List<User> getUsers() {
+        return userDataProvider.getUsers();
     }
 }

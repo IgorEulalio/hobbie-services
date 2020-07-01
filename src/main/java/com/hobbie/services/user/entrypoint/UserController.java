@@ -17,26 +17,21 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    private UserDataProvider userDataProvider;
-
-    @Autowired
     private UserUseCase userUseCase;
 
     @GetMapping()
     public ResponseEntity<List<User>> getUsers() {
-        return ResponseEntity.ok().body(userDataProvider.getUsers());
+        return ResponseEntity.ok().body(userUseCase.getUsers());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable String id) {
-        return ResponseEntity.ok().body(userDataProvider.getUserById(id));
+        return ResponseEntity.ok().body(userUseCase.getUserById(id));
     }
 
     @PostMapping()
     public ResponseEntity<User> addUser(@RequestBody @Valid User user) {
         userUseCase.addUser(user);
-
-//        userDataProvider.addUser(user);
 
         return ResponseEntity.status(201).build();
     }
@@ -45,8 +40,7 @@ public class UserController {
     public ResponseEntity<User> addFeedback(@PathVariable String id,
                                             @RequestBody @Valid FeedbackDto dto) {
 
-        User user = userDataProvider.getUserById(id);
-        userUseCase.addFeedback(user, dto);
+        userUseCase.addFeedback(id, dto);
 
         return ResponseEntity.status(204).build();
     }
