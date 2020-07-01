@@ -17,27 +17,19 @@ import java.util.List;
 public class HobbieController {
 
     @Autowired
-    private HobbieDataProvider dataProvider;
-
-    @Autowired
     private HobbieUseCase useCase;
 
-    @Autowired
-    private UserDataProvider UserDataProvider;
-
     @GetMapping("/hobbies")
-    public ResponseEntity<List<Hobbie>> getEvents(){
-        return ResponseEntity.status(200).body(dataProvider.getEvents());
+    public ResponseEntity<List<Hobbie>> getEvents() {
+        return ResponseEntity.status(200).body(useCase.getEvents());
     }
 
     @PostMapping("/{user_id}/hobbies")
     public ResponseEntity<List<Hobbie>> addEventsInUser(
             @PathVariable(required = true) String user_id,
-            @RequestBody @Valid EventDto event){
+            @RequestBody @Valid EventDto event) {
 
-        User user = UserDataProvider.getUserById(user_id);
-
-        useCase.addCategoryInUser(user, event);
+        useCase.addCategoryInUser(user_id, event);
         return ResponseEntity.status(204).build();
 
     }

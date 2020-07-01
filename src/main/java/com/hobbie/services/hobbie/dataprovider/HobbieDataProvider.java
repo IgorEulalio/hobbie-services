@@ -15,7 +15,7 @@ public class HobbieDataProvider {
         this.repository = repository;
     }
 
-    public List<Hobbie> getEvents(){
+    public List<Hobbie> getHobbies(){
         return repository.findAll();
     }
 }
