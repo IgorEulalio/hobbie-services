@@ -19,7 +19,7 @@ public class UserDataProvider {
         this.repository = repository;
     }
 
-    public User getUserById(String id){
+    public User getUserById(String id) {
 
         Optional<User> byId = repository.findById(id);
 
@@ -29,11 +29,11 @@ public class UserDataProvider {
 
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         return repository.findAll();
     }
 
-    public void addUser(User user){
+    public void addUser(User user) {
         repository.save(user);
     }
 }

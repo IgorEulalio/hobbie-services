@@ -23,8 +23,8 @@ public class UserController {
     private UserUseCase userUseCase;
 
     @GetMapping()
-    public ResponseEntity<List<User>> getUsers(){
-        return  ResponseEntity.ok().body(userDataProvider.getUsers());
+    public ResponseEntity<List<User>> getUsers() {
+        return ResponseEntity.ok().body(userDataProvider.getUsers());
     }
 
     @GetMapping("/{id}")
@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping()
-    public ResponseEntity<User> addUser(@RequestBody @Valid User user){
+    public ResponseEntity<User> addUser(@RequestBody @Valid User user) {
         userDataProvider.addUser(user);
 
         return ResponseEntity.status(201).build();
@@ -41,7 +41,7 @@ public class UserController {
 
     @PostMapping("/{id}/feedback")
     public ResponseEntity<User> addFeedback(@PathVariable String id,
-                                            @RequestBody @Valid FeedbackDto dto){
+                                            @RequestBody @Valid FeedbackDto dto) {
 
         User user = userDataProvider.getUserById(id);
         userUseCase.addFeedback(user, dto);

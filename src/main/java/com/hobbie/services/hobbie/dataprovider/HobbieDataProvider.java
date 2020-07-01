@@ -1,13 +1,10 @@
 package com.hobbie.services.hobbie.dataprovider;
 
 import com.hobbie.services.hobbie.repository.HobbieRepository;
-import com.hobbie.services.user.usecase.model.Event;
-import com.hobbie.services.user.usecase.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.hobbie.services.hobbie.usecase.model.Hobbie;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class HobbieDataProvider {
@@ -18,7 +15,7 @@ public class HobbieDataProvider {
         this.repository = repository;
     }
 
-    public List<Event> getEvents(){
+    public List<Hobbie> getEvents(){
         return repository.findAll();
     }
 
