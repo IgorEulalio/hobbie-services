@@ -34,7 +34,9 @@ public class UserController {
 
     @PostMapping()
     public ResponseEntity<User> addUser(@RequestBody @Valid User user) {
-        userDataProvider.addUser(user);
+        userUseCase.addUser(user);
+
+//        userDataProvider.addUser(user);
 
         return ResponseEntity.status(201).build();
     }

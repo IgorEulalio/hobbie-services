@@ -16,14 +16,15 @@ public class UserUseCase {
     @Autowired
     private UserDataProvider userDataProvider;
 
-    public void addFeedback(User user, FeedbackDto dto) {
+    public void addUser(User user) {
+
         Feedback feedback = user.getFeedback();
 
         if (feedback == null) {
 
             List<Double> notas = new ArrayList<>();
 
-            notas.add(dto.getNota());
+            notas.add(5.00);
 
             Feedback fdbc = Feedback.builder()
                     .nota(notas)
@@ -32,13 +33,16 @@ public class UserUseCase {
                     .build();
 
             user.setFeedback(fdbc);
-
-        } else {
-            feedback.getNota().add(dto.getNota());
-            feedback.setMediaNota(feedback.getMediaNota());
-            feedback.setAvaliacoes(feedback.getAvaliacoes() + 1);
-            user.setFeedback(feedback);
         }
+        userDataProvider.addUser(user);
+    }
+
+    public void addFeedback(User user, FeedbackDto dto) {
+        Feedback feedback = user.getFeedback();
+        feedback.getNota().add(dto.getNota());
+        feedback.setMediaNota(feedback.getMediaNota());
+        feedback.setAvaliacoes(feedback.getAvaliacoes() + 1);
+        user.setFeedback(feedback);
         userDataProvider.addUser(user);
     }
 }

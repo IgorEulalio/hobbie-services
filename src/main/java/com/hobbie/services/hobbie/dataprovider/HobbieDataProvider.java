@@ -18,5 +18,4 @@ public class HobbieDataProvider {
     public List<Hobbie> getEvents(){
         return repository.findAll();
     }
-
 }
