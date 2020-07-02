@@ -4,7 +4,7 @@ import com.hobbie.services.hobbie.dataprovider.HobbieDataProvider;
 import com.hobbie.services.hobbie.usecase.HobbieUseCase;
 import com.hobbie.services.user.dataprovider.UserDataProvider;
 import com.hobbie.services.user.entrypoint.dto.EventDto;
-import com.hobbie.services.user.usecase.model.Event;
+import com.hobbie.services.hobbie.usecase.model.Hobbie;
 import com.hobbie.services.user.usecase.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class HobbieController {
@@ -27,12 +26,12 @@ public class HobbieController {
     private UserDataProvider UserDataProvider;
 
     @GetMapping("/hobbies")
-    public ResponseEntity<List<Event>> getEvents(){
+    public ResponseEntity<List<Hobbie>> getEvents(){
         return ResponseEntity.status(200).body(dataProvider.getEvents());
     }
 
     @PostMapping("/{user_id}/hobbies")
-    public ResponseEntity<List<Event>> addEventsInUser(
+    public ResponseEntity<List<Hobbie>> addEventsInUser(
             @PathVariable(required = true) String user_id,
             @RequestBody @Valid EventDto event){
 

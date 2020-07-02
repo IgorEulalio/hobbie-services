@@ -1,4 +1,4 @@
-package com.hobbie.services.user.usecase.model;
+package com.hobbie.services.hobbie.usecase.model;
 
 import com.hobbie.services.hobbie.usecase.model.Category;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection = "event")
-public class Event {
+public class Hobbie {
 
     @Id
     private String id;
