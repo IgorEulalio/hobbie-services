@@ -1,6 +1,6 @@
 package com.hobbie.services.hobbie.usecase.model;
 
-import com.hobbie.services.hobbie.usecase.model.Category;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,18 +8,19 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "event")
+@Document(collection = "hobbie")
 public class Hobbie {
 
     @Id
     private String id;
 
-    private List<Category> categories;
+    private String category;
+
+    @JsonProperty("sub_category")
+    private String subCategory;
 }
 

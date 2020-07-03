@@ -1,9 +1,10 @@
 package com.hobbie.services.hobbie.usecase;
 
 import com.hobbie.services.hobbie.dataprovider.HobbieDataProvider;
+import com.hobbie.services.hobbie.entrypoint.dto.HobbiesDTO;
+import com.hobbie.services.hobbie.mapper.HobbieMapper;
 import com.hobbie.services.hobbie.usecase.model.Hobbie;
 import com.hobbie.services.user.dataprovider.UserDataProvider;
-import com.hobbie.services.user.entrypoint.dto.EventDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,16 +17,20 @@ public class HobbieUseCase {
     private UserDataProvider userDataProvider;
 
     @Autowired
+    private HobbieMapper mapper;
+
+    @Autowired
     HobbieDataProvider hobbieDataProvider;
 
-    public void addCategoryInUser(String id, EventDto event) {
+    public void addCategoryInUser(String id, List<Hobbie> hobbies) {
 
         var user = userDataProvider.getUserById(id);
-        user.setCategories(event.getCategories());
+        user.setHobbies(hobbies);
         userDataProvider.addUser(user);
     }
 
-    public List<Hobbie> getEvents() {
-        return hobbieDataProvider.getHobbies();
+    public HobbiesDTO getEvents() {
+        var hobbies = hobbieDataProvider.getHobbies();
+        return mapper.toDTO(hobbies);
     }
 }
