@@ -1,4 +1,4 @@
-package com.hobbie.services.config;
+package com.hobbie.services.config.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

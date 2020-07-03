@@ -1,7 +1,7 @@
-package com.hobbie.services.user.usecase.model;
+package com.hobbie.services.user.dataprovider.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.hobbie.services.hobbie.usecase.model.Hobbie;
+import com.hobbie.services.hobbie.dataprovider.repository.entity.Hobbie;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

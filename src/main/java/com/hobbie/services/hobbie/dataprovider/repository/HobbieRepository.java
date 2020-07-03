@@ -1,6 +1,6 @@
-package com.hobbie.services.hobbie.repository;
+package com.hobbie.services.hobbie.dataprovider.repository;
 
-import com.hobbie.services.hobbie.usecase.model.Hobbie;
+import com.hobbie.services.hobbie.dataprovider.repository.entity.Hobbie;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

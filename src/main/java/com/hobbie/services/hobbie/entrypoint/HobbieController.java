@@ -2,7 +2,7 @@ package com.hobbie.services.hobbie.entrypoint;
 
 import com.hobbie.services.hobbie.entrypoint.dto.HobbiesDTO;
 import com.hobbie.services.hobbie.usecase.HobbieUseCase;
-import com.hobbie.services.hobbie.usecase.model.Hobbie;
+import com.hobbie.services.hobbie.dataprovider.repository.entity.Hobbie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

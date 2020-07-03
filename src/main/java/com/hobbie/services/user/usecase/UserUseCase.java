@@ -2,8 +2,10 @@ package com.hobbie.services.user.usecase;
 
 import com.hobbie.services.user.dataprovider.UserDataProvider;
 import com.hobbie.services.user.entrypoint.dto.FeedbackDto;
-import com.hobbie.services.user.usecase.model.Feedback;
-import com.hobbie.services.user.usecase.model.User;
+import com.hobbie.services.user.dataprovider.repository.entity.Feedback;
+import com.hobbie.services.user.dataprovider.repository.entity.User;
+import com.hobbie.services.user.entrypoint.dto.UserDTO;
+import com.hobbie.services.user.usecase.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +18,13 @@ public class UserUseCase {
     @Autowired
     private UserDataProvider userDataProvider;
 
-    public void addUser(User user) {
+    @Autowired
+    private UserMapper mapper;
 
+    public String addUser(UserDTO dto) {
+
+        var user = mapper.toModel(dto);
         Feedback feedback = user.getFeedback();
-
         if (feedback == null) {
 
             List<Double> notas = new ArrayList<>();
@@ -34,7 +39,7 @@ public class UserUseCase {
 
             user.setFeedback(fdbc);
         }
-        userDataProvider.addUser(user);
+        return userDataProvider.addUser(user);
     }
 
     public void addFeedback(String id, FeedbackDto dto) {

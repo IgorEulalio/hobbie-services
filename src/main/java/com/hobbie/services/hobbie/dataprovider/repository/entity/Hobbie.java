@@ -1,4 +1,4 @@
-package com.hobbie.services.hobbie.usecase.model;
+package com.hobbie.services.hobbie.dataprovider.repository.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

@@ -2,8 +2,8 @@ package com.hobbie.services.hobbie.usecase;
 
 import com.hobbie.services.hobbie.dataprovider.HobbieDataProvider;
 import com.hobbie.services.hobbie.entrypoint.dto.HobbiesDTO;
-import com.hobbie.services.hobbie.mapper.HobbieMapper;
-import com.hobbie.services.hobbie.usecase.model.Hobbie;
+import com.hobbie.services.hobbie.usecase.mapper.HobbieConverter;
+import com.hobbie.services.hobbie.dataprovider.repository.entity.Hobbie;
 import com.hobbie.services.user.dataprovider.UserDataProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,7 +17,7 @@ public class HobbieUseCase {
     private UserDataProvider userDataProvider;
 
     @Autowired
-    private HobbieMapper mapper;
+    private HobbieConverter mapper;
 
     @Autowired
     HobbieDataProvider hobbieDataProvider;

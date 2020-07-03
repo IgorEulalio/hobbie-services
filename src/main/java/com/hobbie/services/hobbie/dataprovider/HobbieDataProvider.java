@@ -1,7 +1,7 @@
 package com.hobbie.services.hobbie.dataprovider;
 
-import com.hobbie.services.hobbie.repository.HobbieRepository;
-import com.hobbie.services.hobbie.usecase.model.Hobbie;
+import com.hobbie.services.hobbie.dataprovider.repository.HobbieRepository;
+import com.hobbie.services.hobbie.dataprovider.repository.entity.Hobbie;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

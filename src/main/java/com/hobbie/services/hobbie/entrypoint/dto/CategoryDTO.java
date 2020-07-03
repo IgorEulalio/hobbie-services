@@ -1,6 +1,6 @@
 package com.hobbie.services.hobbie.entrypoint.dto;
 
-import com.hobbie.services.hobbie.usecase.model.Hobbie;
+import com.hobbie.services.hobbie.dataprovider.repository.entity.Hobbie;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,18 +1,17 @@
-package com.hobbie.services.hobbie.mapper;
+package com.hobbie.services.hobbie.usecase.mapper;
 
 import com.hobbie.services.hobbie.entrypoint.dto.CategoryDTO;
 import com.hobbie.services.hobbie.entrypoint.dto.HobbiesDTO;
-import com.hobbie.services.hobbie.usecase.model.Hobbie;
+import com.hobbie.services.hobbie.dataprovider.repository.entity.Hobbie;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
-public class HobbieMapper {
+public class HobbieConverter {
 
 
     public HobbiesDTO toDTO(List<Hobbie> hobbies) {

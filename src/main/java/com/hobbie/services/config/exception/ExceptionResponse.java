@@ -1,4 +1,4 @@
-package com.hobbie.services.config;
+package com.hobbie.services.config.exception;
 
 import lombok.*;
 

@@ -1,16 +1,17 @@
 package com.hobbie.services.user.entrypoint;
 
-import com.hobbie.services.user.dataprovider.UserDataProvider;
 import com.hobbie.services.user.entrypoint.dto.FeedbackDto;
-import com.hobbie.services.user.usecase.model.User;
+import com.hobbie.services.user.dataprovider.repository.entity.User;
+import com.hobbie.services.user.entrypoint.dto.UserDTO;
 import com.hobbie.services.user.usecase.UserUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import javax.validation.Valid;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -30,16 +31,19 @@ public class UserController {
     }
 
     @PostMapping()
-    public ResponseEntity<User> addUser(@RequestBody @Valid User user) {
-        userUseCase.addUser(user);
+    public ResponseEntity<User> addUser(@RequestBody @Valid UserDTO dto) {
 
-        return ResponseEntity.status(201).build();
+        var location = userUseCase.addUser(dto);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequest().path("/{id}")
+                .buildAndExpand(location).toUri();
+
+        return ResponseEntity.created(uri).build();
     }
 
     @PostMapping("/{id}/feedback")
     public ResponseEntity<User> addFeedback(@PathVariable String id,
                                             @RequestBody @Valid FeedbackDto dto) {
-
         userUseCase.addFeedback(id, dto);
 
         return ResponseEntity.status(204).build();
