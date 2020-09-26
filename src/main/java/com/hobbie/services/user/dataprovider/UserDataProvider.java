@@ -1,9 +1,7 @@
 package com.hobbie.services.user.dataprovider;
 
-import com.hobbie.services.user.usecase.model.User;
-import com.hobbie.services.user.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.IncorrectResultSizeDataAccessException;
+import com.hobbie.services.user.dataprovider.repository.entity.User;
+import com.hobbie.services.user.dataprovider.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityNotFoundException;
@@ -33,7 +31,8 @@ public class UserDataProvider {
         return repository.findAll();
     }
 
-    public void addUser(User user) {
-        repository.save(user);
+    public String addUser(User user) {
+        User userDatabase = repository.save(user);
+        return userDatabase.getId();
     }
 }
