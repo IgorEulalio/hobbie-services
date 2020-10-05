@@ -9,7 +9,6 @@
 
         <!--stdout/stderr included for testing Oozie log4j edits-->
         <Console name="stdout" target="SYSTEM_OUT">
-            <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
             <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5p [%-7t] %F:%L - %m%n"/>
         </Console>
         <Console name="stderr" target="SYSTEM_ERR">
