@@ -1,6 +1,6 @@
 package com.hobbie.services.user.dataprovider.service;
 
-import com.hobbie.services.config.infrastructure.LoggingRequestInterceptor;
+import com.hobbie.services.config.infrastructure.LoggableDispatcherServlet;
 import com.hobbie.services.user.dataprovider.repository.entity.User;
 import com.hobbie.services.user.entrypoint.dto.UserDTO;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class GetUserService {
 
         List<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
 
-        interceptors.add(new LoggingRequestInterceptor());
+        interceptors.add(new LoggableDispatcherServlet());
 
         restTemplate.setInterceptors(interceptors);
 
