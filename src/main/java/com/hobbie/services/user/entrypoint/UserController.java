@@ -4,11 +4,12 @@ import com.hobbie.services.user.entrypoint.dto.FeedbackDto;
 import com.hobbie.services.user.dataprovider.repository.entity.User;
 import com.hobbie.services.user.entrypoint.dto.UserDTO;
 import com.hobbie.services.user.usecase.UserUseCase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.zalando.logbook.Logbook;
 
 import java.net.URI;
 import java.util.List;
@@ -18,7 +19,7 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 public class UserController {
 
-    Logbook logbook = Logbook.create();
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserUseCase userUseCase;
