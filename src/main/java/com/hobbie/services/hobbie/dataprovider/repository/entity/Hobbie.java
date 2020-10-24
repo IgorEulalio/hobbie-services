@@ -20,7 +20,6 @@ public class Hobbie {
 
     private String category;
 
-    @JsonProperty("sub_category")
-    private String subCategory;
+    private String sub_category;
 }
 

@@ -20,7 +20,7 @@
     </properties>
 
     <dependencies>
-<!--        Spring Dependencies-->
+        <!--        Spring Dependencies-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -50,14 +50,14 @@
             <optional>true</optional>
         </dependency>
 
-<!--        Lombok Dependencies-->
+        <!--        Lombok Dependencies-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
-<!--        Test Dependencies-->
+        <!--        Test Dependencies-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -85,7 +85,7 @@
             </exclusions>
         </dependency>
 
-<!--        Logback Dependencies-->
+        <!--        Logback Dependencies-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -135,7 +135,7 @@
             </exclusions>
         </dependency>
 
-<!--        Jakarta persistence-->
+        <!--        Jakarta persistence-->
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
@@ -147,20 +147,24 @@
             <artifactId>jakarta.validation-api</artifactId>
             <version>2.0.2</version>
         </dependency>
-
-<!--        Jackson Databind-->
+        <!--        Jackson Databind-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.11.3</version>
         </dependency>
-
+        <!--        Logger dependencies-->
         <dependency>
             <groupId>com.fulllog</groupId>
             <artifactId>alllog4j</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>0.0.1-1</version>
         </dependency>
-
+        <!--    Bean Utils dependency-->
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.4</version>
+        </dependency>
 
     </dependencies>
 

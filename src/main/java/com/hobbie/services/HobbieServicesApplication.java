@@ -16,5 +16,4 @@ public class HobbieServicesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HobbieServicesApplication.class, args);
 	}
-
 }

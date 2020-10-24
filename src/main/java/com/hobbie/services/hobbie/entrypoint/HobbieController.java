@@ -1,6 +1,8 @@
 package com.hobbie.services.hobbie.entrypoint;
 
+import com.hobbie.services.hobbie.entrypoint.dto.HobbieDTO;
 import com.hobbie.services.hobbie.entrypoint.dto.HobbiesDTO;
+import com.hobbie.services.hobbie.entrypoint.mapper.HobbieMapper;
 import com.hobbie.services.hobbie.usecase.HobbieUseCase;
 import com.hobbie.services.hobbie.dataprovider.repository.entity.Hobbie;
 import org.slf4j.Logger;
@@ -15,10 +17,14 @@ import java.util.List;
 @RestController
 public class HobbieController {
 
-    Logger logger = LoggerFactory.getLogger(HobbieController.class);
-
-    @Autowired
     private HobbieUseCase useCase;
+
+    private HobbieMapper mapper;
+
+    public HobbieController(HobbieUseCase useCase, HobbieMapper mapper) {
+        this.useCase = useCase;
+        this.mapper = mapper;
+    }
 
     @GetMapping("/hobbies")
     public ResponseEntity<HobbiesDTO> getEvents() {
@@ -26,14 +32,12 @@ public class HobbieController {
     }
 
     @PostMapping("users/{user_id}/hobbies")
-    public ResponseEntity<List<Hobbie>> addEventsInUser(
+    public ResponseEntity<Object> addEventsInUser(
             @PathVariable(required = true) String user_id,
-            @RequestBody @Valid List<Hobbie> hobbies) {
+            @RequestBody @Valid List<HobbieDTO> hobbies) {
 
-        useCase.addCategoryInUser(user_id, hobbies);
-
+        useCase.addCategoryInUser(user_id, mapper.toModels(hobbies));
 
         return ResponseEntity.status(204).build();
-
     }
 }
