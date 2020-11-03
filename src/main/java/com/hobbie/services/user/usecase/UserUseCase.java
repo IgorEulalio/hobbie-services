@@ -21,9 +21,8 @@ public class UserUseCase {
     @Autowired
     private UserMapper mapper;
 
-    public String addUser(UserDTO dto) {
+    public String addUser(User user) {
 
-        var user = mapper.toModel(dto);
         Feedback feedback = user.getFeedback();
         if (feedback == null) {
 

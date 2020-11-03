@@ -2,6 +2,7 @@ package com.hobbie.services.user.dataprovider;
 
 import com.hobbie.services.user.dataprovider.repository.entity.User;
 import com.hobbie.services.user.dataprovider.repository.UserRepository;
+import com.hobbie.services.user.entrypoint.dto.UserDTO;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityNotFoundException;

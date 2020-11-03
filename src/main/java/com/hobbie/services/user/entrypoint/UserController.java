@@ -4,11 +4,13 @@ import com.hobbie.services.user.entrypoint.dto.FeedbackDto;
 import com.hobbie.services.user.dataprovider.repository.entity.User;
 import com.hobbie.services.user.entrypoint.dto.UserDTO;
 import com.hobbie.services.user.usecase.UserUseCase;
+import com.hobbie.services.user.usecase.mapper.UserMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.zalando.logbook.Logbook;
 
 import java.net.URI;
 import java.util.List;
@@ -18,10 +20,14 @@ import javax.validation.Valid;
 @RequestMapping("/users")
 public class UserController {
 
-    Logbook logbook = Logbook.create();
-
-    @Autowired
     private UserUseCase userUseCase;
+
+    private UserMapper mapper;
+
+    public UserController(UserUseCase userUseCase, UserMapper mapper) {
+        this.userUseCase = userUseCase;
+        this.mapper = mapper;
+    }
 
     @GetMapping()
     public ResponseEntity<List<User>> getUsers() {
@@ -36,7 +42,7 @@ public class UserController {
     @PostMapping()
     public ResponseEntity<User> addUser(@RequestBody @Valid UserDTO dto) {
 
-        var location = userUseCase.addUser(dto);
+        var location = userUseCase.addUser(mapper.toModel(dto));
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest().path("/{id}")
                 .buildAndExpand(location).toUri();
